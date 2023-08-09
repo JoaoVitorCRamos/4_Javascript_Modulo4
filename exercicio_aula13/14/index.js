@@ -13,7 +13,7 @@ const media = (...numbers) => {
 console.log(`media aritimetica: ${media(6,6,6)}`)
 
 const ponderada = (...entrada) => {
-    const soma = entrada.reduce((acumulador, {numero , peso}) => acumulador + (numero * peso), 0)
+    const soma = entrada.reduce((acumulador, {numero, peso}) => acumulador + (numero * peso), 0)
     const somaPesos = entrada.reduce((acumulador, entrada) => acumulador + entrada.peso, 0)
     return soma/somaPesos
 }
@@ -36,3 +36,17 @@ const mediana = (...numbers) => {
 
 console.log(`mediana impar: ${mediana(2,2,3,4,5,6,4)}`);
 console.log(`mediana par: ${mediana(1,2,3,4,5,6,7,8)}`);
+
+
+const moda = (...numeros) => {
+
+    const quantidade = numeros.map(num => [
+        num,
+        numeros.filter(n => num === n).length
+    ])
+
+    quantidade.sort((a, b) => b[1] - a[1])
+    return quantidade[0][0]
+}
+
+console.log(`Moda: ${moda(1, 1, 99,99,99,99,99,99,99,99, 5, 4, 9, 7, 4, 3, 5, 2, 4, 0, 4)}`)
